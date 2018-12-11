@@ -5,6 +5,11 @@
  */
 package com.samples.rest;
 
+import com.samples.rest.HumidityFacade;
+import com.samples.entity.Humidity;
+import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -20,10 +25,14 @@ import javax.ws.rs.core.MediaType;
  * @author ASW
  */
 @Path("humidity")
+@RequestScoped
 public class HumidityREST {
 
     @Context
     private UriInfo context;
+    
+    @Inject
+    private HumidityFacade humidityFacade;
 
     /**
      * Creates a new instance of HumidityREST
@@ -36,11 +45,15 @@ public class HumidityREST {
      * @return an instance of java.lang.String
      */
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    @Produces({"application/json"})
+    public List<Humidity> getJson(){
+        return humidityFacade.findAll();
     }
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String getJson() {
+//        //TODO return proper representation object
+//        throw new UnsupportedOperationException();
+//    }
 
     /**
      * PUT method for updating or creating an instance of HumidityREST

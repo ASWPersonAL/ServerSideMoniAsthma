@@ -29,6 +29,8 @@ public class PeakflowFacade {
         return em.createQuery("SELECT p FROM Peakflow p ORDER BY p.pfDate").getResultList();
     }
     
+    
+    
   public List<Peakflow> findByDate(Date fromDate, Date toDate) {
       //SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");   
       StringBuilder query = new StringBuilder("select p from Peakflow p");
