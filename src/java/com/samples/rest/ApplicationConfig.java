@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(com.samples.rest.HumidityREST.class);
         resources.add(com.samples.rest.PeakflowREST.class);
     }
     

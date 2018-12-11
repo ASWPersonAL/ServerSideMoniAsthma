@@ -6,7 +6,12 @@
 package com.samples.rest;
 
 import com.samples.entity.Peakflow;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
@@ -51,6 +56,26 @@ public class PeakflowREST {
     } 
     
     
+    @GET
+    @Path("/searchByDate/{fromDate}/{toDate}")
+    @Produces("application/json")
+    public List<Peakflow> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
+        Date fromDate;
+        Date toDate;
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); 
+        try {
+            fromDate = format.parse(from);
+        } catch (ParseException ex) {
+            fromDate = null;
+        }
+        try {
+            toDate = format.parse(to);
+        } catch (ParseException ex) {
+            toDate = null;
+        }
+        return peakflowFacade.findByDate(fromDate, toDate);
+    }
+ 
     @GET
     @Path("/search/{pfComment}")
     @Produces("application/json")
