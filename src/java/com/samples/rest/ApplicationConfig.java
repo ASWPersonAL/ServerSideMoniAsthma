@@ -31,6 +31,8 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.samples.rest.AllergiesREST.class);
         resources.add(com.samples.rest.HumidityREST.class);
+        resources.add(com.samples.rest.MessagetestResource.class);
+        resources.add(com.samples.rest.MessagetestsResource.class);
         resources.add(com.samples.rest.PeakflowREST.class);
     }
     
