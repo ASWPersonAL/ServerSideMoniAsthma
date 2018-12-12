@@ -5,7 +5,7 @@
  */
 package com.samples.rest;
 
-import com.samples.entity.Humidity;
+import com.samples.entity.Allergies;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,13 +16,14 @@ import javax.persistence.PersistenceContext;
  * @author ASW
  */
 @Stateless
-public class HumidityFacade {
+public class AllergiesFacade {
 
     @PersistenceContext(unitName= "ServerSideMoniAsthmaPU")
-    
+
     private EntityManager em;
     
-    public List<Humidity> findAll(){
-        return em.createQuery("SELECT h FROM Humidity h ORDER BY h.huDate").getResultList();
+    public List<Allergies> findAll(){
+        return em.createQuery("SELECT a FROM Allergies a ORDER BY a.alDate").getResultList();
     }
+    
 }

@@ -5,7 +5,7 @@
  */
 package com.samples.rest;
 
-import com.samples.entity.Humidity;
+import com.samples.entity.Allergies;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -23,34 +23,34 @@ import javax.ws.rs.core.MediaType;
  *
  * @author ASW
  */
-@Path("humidity")
+@Path("allergies")
 @RequestScoped
-public class HumidityREST {
+public class AllergiesREST {
 
     @Context
     private UriInfo context;
     
     @Inject
-    private HumidityFacade humidityFacade;
+    private AllergiesFacade allergiesFacade;
 
     /**
-     * Creates a new instance of HumidityREST
+     * Creates a new instance of AllergiesREST
      */
-    public HumidityREST() {
+    public AllergiesREST() {
     }
 
     /**
-     * Retrieves representation of an instance of com.samples.rest.HumidityREST
+     * Retrieves representation of an instance of com.samples.rest.AllergiesREST
      * @return an instance of java.lang.String
      */
     @GET
     @Produces("application/json")
-    public List<Humidity> getJson(){
-        return humidityFacade.findAll();
+    public List<Allergies> getJson(){
+        return allergiesFacade.findAll();
     }
 
     /**
-     * PUT method for updating or creating an instance of HumidityREST
+     * PUT method for updating or creating an instance of AllergiesREST
      * @param content representation for the resource
      */
     @PUT

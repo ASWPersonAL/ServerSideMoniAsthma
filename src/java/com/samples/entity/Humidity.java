@@ -35,70 +35,70 @@ public class Humidity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "H_ID")
-    private Integer hId;
+    @Column(name = "HU_ID")
+    private Integer huId;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "H_VALUE")
-    private int hValue;
+    @Column(name = "HU_VALUE")
+    private int huValue;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "H_DATE")
+    @Column(name = "HU_DATE")
     @Temporal(TemporalType.DATE)
-    private Date hDate;
+    private Date huDate;
     @Size(max = 255)
-    @Column(name = "H_COMMENT")
-    private String hComment;
+    @Column(name = "HU_COMMENT")
+    private String huComment;
 
     public Humidity() {
     }
 
-    public Humidity(Integer hId) {
-        this.hId = hId;
+    public Humidity(Integer huId) {
+        this.huId = huId;
     }
 
-    public Humidity(Integer hId, int hValue, Date hDate) {
-        this.hId = hId;
-        this.hValue = hValue;
-        this.hDate = hDate;
+    public Humidity(Integer huId, int huValue, Date huDate) {
+        this.huId = huId;
+        this.huValue = huValue;
+        this.huDate = huDate;
     }
 
-    public Integer getHId() {
-        return hId;
+    public Integer getHuId() {
+        return huId;
     }
 
-    public void setHId(Integer hId) {
-        this.hId = hId;
+    public void setHuId(Integer huId) {
+        this.huId = huId;
     }
 
-    public int getHValue() {
-        return hValue;
+    public int getHuValue() {
+        return huValue;
     }
 
-    public void setHValue(int hValue) {
-        this.hValue = hValue;
+    public void setHuValue(int huValue) {
+        this.huValue = huValue;
     }
 
-    public Date getHDate() {
-        return hDate;
+    public Date getHuDate() {
+        return huDate;
     }
 
-    public void setHDate(Date hDate) {
-        this.hDate = hDate;
+    public void setHuDate(Date huDate) {
+        this.huDate = huDate;
     }
 
-    public String getHComment() {
-        return hComment;
+    public String getHuComment() {
+        return huComment;
     }
 
-    public void setHComment(String hComment) {
-        this.hComment = hComment;
+    public void setHuComment(String huComment) {
+        this.huComment = huComment;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (hId != null ? hId.hashCode() : 0);
+        hash += (huId != null ? huId.hashCode() : 0);
         return hash;
     }
 
@@ -109,7 +109,7 @@ public class Humidity implements Serializable {
             return false;
         }
         Humidity other = (Humidity) object;
-        if ((this.hId == null && other.hId != null) || (this.hId != null && !this.hId.equals(other.hId))) {
+        if ((this.huId == null && other.huId != null) || (this.huId != null && !this.huId.equals(other.huId))) {
             return false;
         }
         return true;
@@ -117,7 +117,7 @@ public class Humidity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.samples.entity.Humidity[ hId=" + hId + " ]";
+        return "com.samples.entity.Humidity[ huId=" + huId + " ]";
     }
     
 }
