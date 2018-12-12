@@ -63,19 +63,24 @@ public class PeakflowFacade {
       
       return entityQuery.getResultList();
     }
-
-  public List<Peakflow> findByComment(String pfcomment){
-        return em.createQuery("select p from Peakflow p where "+
-                "UPPER(p.pfComment) LIKE :pfcomment").
-                setParameter("pfcomment", "%" + pfcomment.toUpperCase() + "%").
-                        getResultList();
-    }
   
-  public List<Peakflow> findById(String pfmeasureId){
-      return em.createQuery("select p from Peakflow p where " + 
-              "p.pfMeasureid LIKE :pfmeasureId").
-              setParameter("pfmeasureId", "%" ).
-              getResultList();
-  }
+    public void addPeakflow(Peakflow peakflow){
+      em.persist(peakflow);
+    }
     
 }
+
+
+//  public List<Peakflow> findByComment(String pfcomment){
+//        return em.createQuery("select p from Peakflow p where "+
+//                "UPPER(p.pfComment) LIKE :pfcomment").
+//                setParameter("pfcomment", "%" + pfcomment.toUpperCase() + "%").
+//                        getResultList();
+//    }
+//  
+//  public List<Peakflow> findById(String pfmeasureId){
+//      return em.createQuery("select p from Peakflow p where " + 
+//              "p.pfMeasureid LIKE :pfmeasureId").
+//              setParameter("pfmeasureId", "%" ).
+//              getResultList();
+//  }

@@ -33,7 +33,8 @@ public class ApplicationConfig extends Application {
         resources.add(com.samples.rest.HumidityREST.class);
         resources.add(com.samples.rest.MessagetestResource.class);
         resources.add(com.samples.rest.MessagetestsResource.class);
-        resources.add(com.samples.rest.PeakflowREST.class);
+        resources.add(com.samples.rest.PeakflowResource.class);
+        resources.add(com.samples.rest.PeakflowsResources.class);
     }
     
 }

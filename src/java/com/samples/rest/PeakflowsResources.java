@@ -6,6 +6,7 @@
 package com.samples.rest;
 
 import com.samples.entity.Peakflow;
+import com.samples.rest.PeakflowFacade;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,37 +15,38 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
  *
  * @author ASW
  */
-@Path("peakflow")
+@Path("/pf")
 @RequestScoped
-public class PeakflowREST {
+public class PeakflowsResources {
 
     @Context
     private UriInfo context;
 
     @Inject
-    private PeakflowFacade peakflowFacade; 
+    private PeakflowFacade peakflowFacade;
     
     /**
-     * Creates a new instance of PeakflowREST
+     * Creates a new instance of PeakflowsResources
      */
-    public PeakflowREST() {
+    public PeakflowsResources() {
     }
 
     /**
-     * Retrieves representation of an instance of com.samples.rest.PeakflowREST
+     * Retrieves representation of an instance of com.samples.entity.PeakflowsResources
      * @return an instance of java.lang.String
      */
     @GET
@@ -74,28 +76,33 @@ public class PeakflowREST {
         }
         return peakflowFacade.findByDate(fromDate, toDate);
     }
- 
-    @GET
-    @Path("/search/{pfComment}")
-    @Produces("application/json")
-    public List<Peakflow> findByComment(@PathParam("pfComment") String pfcomment){
-        return peakflowFacade.findByComment(pfcomment);
-    }
     
-    @GET
-    @Path("{pfMeasureid}")
+    @POST
+    @Consumes("application/json")
     @Produces("application/json")
-    public List<Peakflow> findById(@PathParam("pfMeasureid") String pfmeasureId){
-        return peakflowFacade.findById(pfmeasureId);
+    public void create(Peakflow peakflow){
+        peakflowFacade.addPeakflow(peakflow);
     }
  
 
     /**
-     * PUT method for updating or creating an instance of PeakflowREST
-     * @param content representation for the resource
+     * POST method for creating an instance of PeakflowResource
+     * @param content representation for the new resource
+     * @return an HTTP response with content of the created resource
      */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response postJson(String content) {
+//        //TODO
+//        return Response.created(context.getAbsolutePath()).build();
+//    }
+
+    /**
+     * Sub-resource locator method for {id}
+     */
+    @Path("{id}")
+    public PeakflowResource getPeakflowResource(@PathParam("id") String id) {
+        return PeakflowResource.getInstance(id);
     }
 }

@@ -6,6 +6,7 @@
 package com.samples.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -26,6 +27,8 @@ import javax.validation.constraints.Size;
  * @author ASW
  */
 @Entity
+
+
 @Table(name = "PEAKFLOW")
 @NamedQueries({
     @NamedQuery(name = "Peakflow.findAll", query = "SELECT p FROM Peakflow p")})
@@ -44,11 +47,13 @@ public class Peakflow implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "PF_DATE")
+   
     @Temporal(TemporalType.DATE)
     private Date pfDate;
     @Size(max = 255)
     @Column(name = "PF_COMMENT")
     private String pfComment;
+  
 
     public Peakflow() {
     }
@@ -58,6 +63,7 @@ public class Peakflow implements Serializable {
     }
 
     public Peakflow(Integer pfMeasureid, int pfValue, Date pfDate) {
+   
         this.pfMeasureid = pfMeasureid;
         this.pfValue = pfValue;
         this.pfDate = pfDate;
