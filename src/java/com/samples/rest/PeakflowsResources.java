@@ -77,6 +77,12 @@ public class PeakflowsResources {
         return peakflowFacade.findByDate(fromDate, toDate);
     }
     
+     /**
+     * POST method for creating an instance of PeakflowResource
+     * @param content representation for the new resource
+     * @return an HTTP response with content of the created resource
+     */
+    
     @POST
     @Consumes("application/json")
     @Produces("application/json")
@@ -85,18 +91,8 @@ public class PeakflowsResources {
     }
  
 
-    /**
-     * POST method for creating an instance of PeakflowResource
-     * @param content representation for the new resource
-     * @return an HTTP response with content of the created resource
-     */
-//    @POST
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response postJson(String content) {
-//        //TODO
-//        return Response.created(context.getAbsolutePath()).build();
-//    }
+   
+
 
     /**
      * Sub-resource locator method for {id}

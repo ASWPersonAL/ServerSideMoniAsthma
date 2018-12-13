@@ -39,9 +39,6 @@ public class PeakflowFacade {
           query.append(" WHERE 1=1");
       }
       
-      //if (pfcomment != null && pfcomment != "") {
-      //    query.append( " AND UPPER(p.pfComment) LIKE :pfcomment");
-      //}
       if (fromDate != null) {
           query.append( " AND p.pfDate >= :fromdate");
       }
@@ -51,9 +48,6 @@ public class PeakflowFacade {
       
       Query entityQuery = em.createQuery(query.toString());
       
-      //if (pfcomment != null && pfcomment != "") {
-      //    entityQuery.setParameter("pfcomment", "%" + pfcomment.toUpperCase() + "%");
-      //}
       if (fromDate != null) {
           entityQuery.setParameter("fromdate", fromDate);
       }
