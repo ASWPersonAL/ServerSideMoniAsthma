@@ -6,7 +6,6 @@
 package com.samples.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -40,11 +38,9 @@ public class Baseline implements Serializable {
     @NotNull
     @Column(name = "BA_VALUE")
     private int baValue;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 30)
     @Column(name = "BA_DATE")
-    @Temporal(TemporalType.DATE)
-    private Date baDate;
+    private String baDate;
 
     public Baseline() {
     }
@@ -53,10 +49,9 @@ public class Baseline implements Serializable {
         this.baId = baId;
     }
 
-    public Baseline(Integer baId, int baValue, Date baDate) {
+    public Baseline(Integer baId, int baValue) {
         this.baId = baId;
         this.baValue = baValue;
-        this.baDate = baDate;
     }
 
     public Integer getBaId() {
@@ -75,11 +70,11 @@ public class Baseline implements Serializable {
         this.baValue = baValue;
     }
 
-    public Date getBaDate() {
+    public String getBaDate() {
         return baDate;
     }
 
-    public void setBaDate(Date baDate) {
+    public void setBaDate(String baDate) {
         this.baDate = baDate;
     }
 
