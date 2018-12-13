@@ -6,7 +6,6 @@
 package com.samples.entity;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -27,8 +26,6 @@ import javax.validation.constraints.Size;
  * @author ASW
  */
 @Entity
-
-
 @Table(name = "PEAKFLOW")
 @NamedQueries({
     @NamedQuery(name = "Peakflow.findAll", query = "SELECT p FROM Peakflow p")})
@@ -38,50 +35,46 @@ public class Peakflow implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "PF_MEASUREID")
-    private Integer pfMeasureid;
-    @Basic(optional = false)
-    @NotNull
+    @Column(name = "PF_ID")
+    private Integer pfId;
     @Column(name = "PF_VALUE")
-    private int pfValue;
+    private Integer pfValue;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PF_DATE")
-   
     @Temporal(TemporalType.DATE)
     private Date pfDate;
     @Size(max = 255)
     @Column(name = "PF_COMMENT")
     private String pfComment;
-  
+    @Column(name = "PF_BASELINE")
+    private Integer pfBaseline;
 
     public Peakflow() {
     }
 
-    public Peakflow(Integer pfMeasureid) {
-        this.pfMeasureid = pfMeasureid;
+    public Peakflow(Integer pfId) {
+        this.pfId = pfId;
     }
 
-    public Peakflow(Integer pfMeasureid, int pfValue, Date pfDate) {
-   
-        this.pfMeasureid = pfMeasureid;
-        this.pfValue = pfValue;
+    public Peakflow(Integer pfId, Date pfDate) {
+        this.pfId = pfId;
         this.pfDate = pfDate;
     }
 
-    public Integer getPfMeasureid() {
-        return pfMeasureid;
+    public Integer getPfId() {
+        return pfId;
     }
 
-    public void setPfMeasureid(Integer pfMeasureid) {
-        this.pfMeasureid = pfMeasureid;
+    public void setPfId(Integer pfId) {
+        this.pfId = pfId;
     }
 
-    public int getPfValue() {
+    public Integer getPfValue() {
         return pfValue;
     }
 
-    public void setPfValue(int pfValue) {
+    public void setPfValue(Integer pfValue) {
         this.pfValue = pfValue;
     }
 
@@ -101,10 +94,18 @@ public class Peakflow implements Serializable {
         this.pfComment = pfComment;
     }
 
+    public Integer getPfBaseline() {
+        return pfBaseline;
+    }
+
+    public void setPfBaseline(Integer pfBaseline) {
+        this.pfBaseline = pfBaseline;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pfMeasureid != null ? pfMeasureid.hashCode() : 0);
+        hash += (pfId != null ? pfId.hashCode() : 0);
         return hash;
     }
 
@@ -115,7 +116,7 @@ public class Peakflow implements Serializable {
             return false;
         }
         Peakflow other = (Peakflow) object;
-        if ((this.pfMeasureid == null && other.pfMeasureid != null) || (this.pfMeasureid != null && !this.pfMeasureid.equals(other.pfMeasureid))) {
+        if ((this.pfId == null && other.pfId != null) || (this.pfId != null && !this.pfId.equals(other.pfId))) {
             return false;
         }
         return true;
@@ -123,7 +124,7 @@ public class Peakflow implements Serializable {
 
     @Override
     public String toString() {
-        return "com.samples.entity.Peakflow[ pfMeasureid=" + pfMeasureid + " ]";
+        return "com.samples.entity.Peakflow[ pfId=" + pfId + " ]";
     }
     
 }
