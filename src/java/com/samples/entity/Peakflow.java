@@ -37,8 +37,10 @@ public class Peakflow implements Serializable {
     @Basic(optional = false)
     @Column(name = "PF_ID")
     private Integer pfId;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "PF_VALUE")
-    private Integer pfValue;
+    private int pfValue;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PF_DATE")
@@ -47,8 +49,10 @@ public class Peakflow implements Serializable {
     @Size(max = 255)
     @Column(name = "PF_COMMENT")
     private String pfComment;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "PF_BASELINE")
-    private Integer pfBaseline;
+    private int pfBaseline;
 
     public Peakflow() {
     }
@@ -57,9 +61,11 @@ public class Peakflow implements Serializable {
         this.pfId = pfId;
     }
 
-    public Peakflow(Integer pfId, Date pfDate) {
+    public Peakflow(Integer pfId, int pfValue, Date pfDate, int pfBaseline) {
         this.pfId = pfId;
+        this.pfValue = pfValue;
         this.pfDate = pfDate;
+        this.pfBaseline = pfBaseline;
     }
 
     public Integer getPfId() {
@@ -70,11 +76,11 @@ public class Peakflow implements Serializable {
         this.pfId = pfId;
     }
 
-    public Integer getPfValue() {
+    public int getPfValue() {
         return pfValue;
     }
 
-    public void setPfValue(Integer pfValue) {
+    public void setPfValue(int pfValue) {
         this.pfValue = pfValue;
     }
 
@@ -94,11 +100,11 @@ public class Peakflow implements Serializable {
         this.pfComment = pfComment;
     }
 
-    public Integer getPfBaseline() {
+    public int getPfBaseline() {
         return pfBaseline;
     }
 
-    public void setPfBaseline(Integer pfBaseline) {
+    public void setPfBaseline(int pfBaseline) {
         this.pfBaseline = pfBaseline;
     }
 
