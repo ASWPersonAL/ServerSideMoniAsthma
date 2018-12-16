@@ -49,10 +49,6 @@ public class Peakflow implements Serializable {
     @Size(max = 255)
     @Column(name = "PF_COMMENT")
     private String pfComment;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "PF_BASELINE")
-    private int pfBaseline;
 
     public Peakflow() {
     }
@@ -61,11 +57,10 @@ public class Peakflow implements Serializable {
         this.pfId = pfId;
     }
 
-    public Peakflow(Integer pfId, int pfValue, Date pfDate, int pfBaseline) {
+    public Peakflow(Integer pfId, int pfValue, Date pfDate) {
         this.pfId = pfId;
         this.pfValue = pfValue;
         this.pfDate = pfDate;
-        this.pfBaseline = pfBaseline;
     }
 
     public Integer getPfId() {
@@ -98,14 +93,6 @@ public class Peakflow implements Serializable {
 
     public void setPfComment(String pfComment) {
         this.pfComment = pfComment;
-    }
-
-    public int getPfBaseline() {
-        return pfBaseline;
-    }
-
-    public void setPfBaseline(int pfBaseline) {
-        this.pfBaseline = pfBaseline;
     }
 
     @Override

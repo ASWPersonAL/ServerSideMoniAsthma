@@ -46,6 +46,8 @@ public class PeakflowFacade {
           query.append( " AND p.pfDate <= :todate");
       }
       
+      query.append(" ORDER BY p.pfDate");
+      
       Query entityQuery = em.createQuery(query.toString());
       
       if (fromDate != null) {
