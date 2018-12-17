@@ -5,6 +5,7 @@
  */
 package com.samples.rest;
 
+import com.samples.entity.Allergies;
 import com.samples.entity.Humidity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,49 +15,49 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Produces;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.POST;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.MediaType;
 
 /**
  * REST Web Service
  *
  * @author ASW
  */
-@Path("humidity")
+@Path("/al")
 @RequestScoped
-public class HumidityREST {
+public class AllergiessResource {
 
     @Context
     private UriInfo context;
     
     @Inject
-    private HumidityFacade humidityFacade;
+    private AllergiesFacade allergiesFacade;
 
     /**
-     * Creates a new instance of HumidityREST
+     * Creates a new instance of AllergiessResource
      */
-    public HumidityREST() {
+    public AllergiessResource() {
     }
 
     /**
-     * Retrieves representation of an instance of com.samples.rest.HumidityREST
+     * Retrieves representation of an instance of com.samples.rest.AllergiessResource
      * @return an instance of java.lang.String
      */
-    @GET
+   @GET
     @Produces("application/json")
-    public List<Humidity> getJson(){
-        return humidityFacade.findAll();
+    public List<Allergies> getJson(){
+        return allergiesFacade.findAll();
     }
-
-    @GET
+    
+    
+     @GET
     @Path("/searchByDate/{fromDate}/{toDate}")
     @Produces("application/json")
-    public List<Humidity> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
+    public List<Allergies> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
         Date fromDate;
         Date toDate;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); 
@@ -70,16 +71,27 @@ public class HumidityREST {
         } catch (ParseException ex) {
             toDate = null;
         }
-        return humidityFacade.findByDate(fromDate, toDate);
+        return allergiesFacade.findByDate(fromDate, toDate);
     }
     
-    
+
     /**
-     * PUT method for updating or creating an instance of HumidityREST
-     * @param content representation for the resource
+     * POST method for creating an instance of AllergiesResource
+     * @param content representation for the new resource
+     * @return an HTTP response with content of the created resource
      */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
+    public void createAllergiesPoint(Allergies allergy){
+        allergiesFacade.addAllergies(allergy);
     }
+
+//    /**
+//     * Sub-resource locator method for {id}
+//     */
+//    @Path("{id}")
+//    public AllergiesResource getAllergiesResource(@PathParam("id") String id) {
+//        return AllergiesResource.getInstance(id);
+//    }
 }

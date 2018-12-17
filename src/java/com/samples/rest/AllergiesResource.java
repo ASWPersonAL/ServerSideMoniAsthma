@@ -17,28 +17,28 @@ import javax.ws.rs.core.MediaType;
  *
  * @author ASW
  */
-public class BaselineResource {
+public class AllergiesResource {
 
     private String id;
 
     /**
-     * Creates a new instance of BaselineResource
+     * Creates a new instance of AllergiesResource
      */
-    private BaselineResource(String id) {
+    private AllergiesResource(String id) {
         this.id = id;
     }
 
     /**
-     * Get instance of the BaselineResource
+     * Get instance of the AllergiesResource
      */
-    public static BaselineResource getInstance(String id) {
+    public static AllergiesResource getInstance(String id) {
         // The user may use some kind of persistence mechanism
-        // to store and restore instances of BaselineResource class.
-        return new BaselineResource(id);
+        // to store and restore instances of AllergiesResource class.
+        return new AllergiesResource(id);
     }
 
     /**
-     * Retrieves representation of an instance of com.samples.rest.BaselineResource
+     * Retrieves representation of an instance of com.samples.rest.AllergiesResource
      * @return an instance of java.lang.String
      */
     @GET
@@ -49,7 +49,7 @@ public class BaselineResource {
     }
 
     /**
-     * PUT method for updating or creating an instance of BaselineResource
+     * PUT method for updating or creating an instance of AllergiesResource
      * @param content representation for the resource
      */
     @PUT
@@ -58,7 +58,7 @@ public class BaselineResource {
     }
 
     /**
-     * DELETE method for resource BaselineResource
+     * DELETE method for resource AllergiesResource
      */
     @DELETE
     public void delete() {

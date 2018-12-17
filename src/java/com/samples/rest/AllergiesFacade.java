@@ -43,6 +43,8 @@ public class AllergiesFacade {
           query.append( " AND a.alDate <= :todate");
       }
       
+       query.append(" ORDER BY a.alDate");
+      
       Query entityQuery = em.createQuery(query.toString());
       
       if (fromDate != null) {
@@ -53,6 +55,10 @@ public class AllergiesFacade {
       }
       
       return entityQuery.getResultList();
+    }
+    
+     public void addAllergies(Allergies allergy){
+      em.persist(allergy);
     }
     
 }

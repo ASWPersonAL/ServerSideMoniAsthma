@@ -48,6 +48,8 @@ public class HumidityFacade {
           query.append( " AND h.huDate <= :todate");
       }
       
+      query.append(" ORDER BY h.huDate");
+      
       Query entityQuery = em.createQuery(query.toString());
       
       if (fromDate != null) {
@@ -58,5 +60,10 @@ public class HumidityFacade {
       }
       
       return entityQuery.getResultList();
+    }
+      
+      
+      public void addHumidity(Humidity humidity){
+      em.persist(humidity);
     }
 }
