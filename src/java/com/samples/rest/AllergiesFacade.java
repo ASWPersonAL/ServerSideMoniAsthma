@@ -24,12 +24,17 @@ public class AllergiesFacade {
 
     private EntityManager em;
     
+////Class methods.
+    
+    //// Method to get all elements in allergies table in DB. 
+    
     public List<Allergies> findAll(){
         return em.createQuery("SELECT a FROM Allergies a ORDER BY a.alDate").getResultList();
     }
     
+    //// Method to select elements from allergies table within a selected Date range.
+    
     public List<Allergies> findByDate(Date fromDate, Date toDate) {
-      //SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");   
       StringBuilder query = new StringBuilder("select a from Allergies a");
       
       if (fromDate != null || toDate != null) {
@@ -43,7 +48,7 @@ public class AllergiesFacade {
           query.append( " AND a.alDate <= :todate");
       }
       
-       query.append(" ORDER BY a.alDate");
+      query.append(" ORDER BY a.alDate");
       
       Query entityQuery = em.createQuery(query.toString());
       
@@ -56,6 +61,8 @@ public class AllergiesFacade {
       
       return entityQuery.getResultList();
     }
+    
+    //// Method to add an allergy element to table. 
     
      public void addAllergies(Allergies allergy){
       em.persist(allergy);

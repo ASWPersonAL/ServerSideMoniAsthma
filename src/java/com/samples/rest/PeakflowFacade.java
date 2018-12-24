@@ -6,7 +6,6 @@
 package com.samples.rest;
 
 import com.samples.entity.Peakflow;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -25,14 +24,17 @@ public class PeakflowFacade {
     
     private EntityManager em;
     
+////Class methods.
+    
+    //// Method to get all elements in Pekaflow table in DB.     
+    
     public List<Peakflow> findAll(){
         return em.createQuery("SELECT p FROM Peakflow p ORDER BY p.pfDate").getResultList();
     }
     
-    
+    //// Method to select elements from peakflow table within a selected Date range.
     
   public List<Peakflow> findByDate(Date fromDate, Date toDate) {
-      //SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");   
       StringBuilder query = new StringBuilder("select p from Peakflow p");
       
       if (fromDate != null || toDate != null) {
@@ -60,23 +62,11 @@ public class PeakflowFacade {
       return entityQuery.getResultList();
     }
   
+    //// Method to add a peakflow element to table. 
+  
     public void addPeakflow(Peakflow peakflow){
       em.persist(peakflow);
     }
     
 }
 
-
-//  public List<Peakflow> findByComment(String pfcomment){
-//        return em.createQuery("select p from Peakflow p where "+
-//                "UPPER(p.pfComment) LIKE :pfcomment").
-//                setParameter("pfcomment", "%" + pfcomment.toUpperCase() + "%").
-//                        getResultList();
-//    }
-//  
-//  public List<Peakflow> findById(String pfmeasureId){
-//      return em.createQuery("select p from Peakflow p where " + 
-//              "p.pfMeasureid LIKE :pfmeasureId").
-//              setParameter("pfmeasureId", "%" ).
-//              getResultList();
-//  }

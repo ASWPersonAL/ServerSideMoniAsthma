@@ -27,7 +27,7 @@ import javax.ws.rs.Path;
  *
  * @author ASW
  */
-@Path("/pf")
+@Path("/peakflow")
 @RequestScoped
 public class PeakflowsResources {
     

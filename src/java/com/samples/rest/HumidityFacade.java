@@ -25,22 +25,24 @@ public class HumidityFacade {
     
     private EntityManager em;
     
+////Class methods.
+    
+    //// Method to get all elements in humidity table in DB. 
+    
     public List<Humidity> findAll(){
         return em.createQuery("SELECT h FROM Humidity h ORDER BY h.huDate").getResultList();
     }
     
+    //// Method to select elements from humidity table within a selected Date range.
     
       public List<Humidity> findByDate(Date fromDate, Date toDate) {
-      //SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");   
+   
       StringBuilder query = new StringBuilder("select h from Humidity h");
       
       if (fromDate != null || toDate != null) {
           query.append(" WHERE 1=1");
       }
       
-      //if (pfcomment != null && pfcomment != "") {
-      //    query.append( " AND UPPER(p.pfComment) LIKE :pfcomment");
-      //}
       if (fromDate != null) {
           query.append( " AND h.huDate >= :fromdate");
       }
@@ -62,6 +64,7 @@ public class HumidityFacade {
       return entityQuery.getResultList();
     }
       
+    //// Method to add an humidity element to table. 
       
       public void addHumidity(Humidity humidity){
       em.persist(humidity);

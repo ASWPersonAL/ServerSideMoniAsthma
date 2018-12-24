@@ -6,15 +6,12 @@
 package com.samples.rest;
 
 import com.samples.entity.Allergies;
-import com.samples.entity.Humidity;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Consumes;
@@ -27,12 +24,11 @@ import javax.ws.rs.Path;
  *
  * @author ASW
  */
-@Path("/al")
+@Path("/allergies")
 @RequestScoped
 public class AllergiessResource {
-
-    @Context
-    private UriInfo context;
+    
+ //// Inject the Facade class that has the defined methods for the GET/POST methods.     
     
     @Inject
     private AllergiesFacade allergiesFacade;
@@ -53,8 +49,7 @@ public class AllergiessResource {
         return allergiesFacade.findAll();
     }
     
-    
-     @GET
+    @GET
     @Path("/searchByDate/{fromDate}/{toDate}")
     @Produces("application/json")
     public List<Allergies> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
@@ -87,11 +82,4 @@ public class AllergiessResource {
         allergiesFacade.addAllergies(allergy);
     }
 
-//    /**
-//     * Sub-resource locator method for {id}
-//     */
-//    @Path("{id}")
-//    public AllergiesResource getAllergiesResource(@PathParam("id") String id) {
-//        return AllergiesResource.getInstance(id);
-//    }
 }

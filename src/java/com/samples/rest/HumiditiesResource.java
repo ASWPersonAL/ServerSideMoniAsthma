@@ -12,28 +12,24 @@ import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+
 
 /**
  * REST Web Service
  *
  * @author ASW
  */
-@Path("/hu")
+@Path("/humidity")
 @RequestScoped
 public class HumiditiesResource {
-
-    @Context
-    private UriInfo context;
+    
+ //// Inject the Facade class that has the defined methods for the GET/POST methods.     
     
     @Inject
     private HumidityFacade humidityFacade;
@@ -48,7 +44,7 @@ public class HumiditiesResource {
      * Retrieves representation of an instance of com.samples.rest.HumiditiesResource
      * @return an instance of java.lang.String
      */
-   @GET
+    @GET
     @Produces("application/json")
     public List<Humidity> getJson(){
         return humidityFacade.findAll();
