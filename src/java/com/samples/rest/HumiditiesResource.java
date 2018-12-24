@@ -87,11 +87,5 @@ public class HumiditiesResource {
         humidityFacade.addHumidity(humidity);
     }
 
-    /**
-     * Sub-resource locator method for {id}
-     */
-    @Path("{id}")
-    public HumidityResource getHumidityResource(@PathParam("id") String id) {
-        return HumidityResource.getInstance(id);
-    }
+
 }

@@ -56,7 +56,6 @@ public class PeakflowsResources {
     } 
     
     
-    
     @GET
     @Path("/searchByDate/{fromDate}/{toDate}")
     @Produces("application/json")
@@ -90,15 +89,4 @@ public class PeakflowsResources {
         peakflowFacade.addPeakflow(peakflow);
     }
  
-
-   
-
-
-    /**
-     * Sub-resource locator method for {id}
-     */
-    @Path("{id}")
-    public PeakflowResource getPeakflowResource(@PathParam("id") String id) {
-        return PeakflowResource.getInstance(id);
-    }
 }

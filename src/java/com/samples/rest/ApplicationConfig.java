@@ -29,11 +29,8 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(com.samples.rest.AllergiesResource.class);
         resources.add(com.samples.rest.AllergiessResource.class);
         resources.add(com.samples.rest.HumiditiesResource.class);
-        resources.add(com.samples.rest.HumidityResource.class);
-        resources.add(com.samples.rest.PeakflowResource.class);
         resources.add(com.samples.rest.PeakflowsResources.class);
     }
     
