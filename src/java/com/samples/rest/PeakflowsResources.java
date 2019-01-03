@@ -48,7 +48,7 @@ public class PeakflowsResources {
      */
     @GET
     @Produces("application/json")
-    public List<Peakflow> getJson(){
+    public List<Peakflow> findAll(){
         return peakflowFacade.findAll();
     } 
     
@@ -82,7 +82,7 @@ public class PeakflowsResources {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public void create(Peakflow peakflow){
+    public void addPeakflow(Peakflow peakflow){
         peakflowFacade.addPeakflow(peakflow);
     }
  

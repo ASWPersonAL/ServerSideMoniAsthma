@@ -46,7 +46,7 @@ public class HumiditiesResource {
      */
     @GET
     @Produces("application/json")
-    public List<Humidity> getJson(){
+    public List<Humidity> findAll(){
         return humidityFacade.findAll();
     }
 
@@ -79,7 +79,7 @@ public class HumiditiesResource {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public void createHUmidityPoint(Humidity humidity){
+    public void addHumidty(Humidity humidity){
         humidityFacade.addHumidity(humidity);
     }
 

@@ -45,7 +45,7 @@ public class AllergiessResource {
      */
    @GET
     @Produces("application/json")
-    public List<Allergies> getJson(){
+    public List<Allergies> findAll(){
         return allergiesFacade.findAll();
     }
     
@@ -78,7 +78,7 @@ public class AllergiessResource {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public void createAllergiesPoint(Allergies allergy){
+    public void addAllergies(Allergies allergy){
         allergiesFacade.addAllergies(allergy);
     }
 
