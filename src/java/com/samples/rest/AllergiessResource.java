@@ -43,7 +43,7 @@ public class AllergiessResource {
      * Retrieves representation of an instance of com.samples.rest.AllergiessResource
      * @return an instance of java.lang.String
      */
-   @GET
+    @GET
     @Produces("application/json")
     public List<Allergies> findAll(){
         return allergiesFacade.findAll();
