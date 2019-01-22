@@ -28,13 +28,13 @@ public class PeakflowFacade {
     
     //// Method to get all elements in Pekaflow table in DB.     
     
-    public List<Peakflow> findAll(){
+    public List<Peakflow> findAllPeakflow(){
         return em.createQuery("SELECT p FROM Peakflow p ORDER BY p.pfDate").getResultList();
     }
     
     //// Method to select elements from peakflow table within a selected Date range.
     
-  public List<Peakflow> findByDate(Date fromDate, Date toDate) {
+  public List<Peakflow> findByDatePeakflow(Date fromDate, Date toDate) {
       StringBuilder query = new StringBuilder("select p from Peakflow p");
       
       if (fromDate != null || toDate != null) {

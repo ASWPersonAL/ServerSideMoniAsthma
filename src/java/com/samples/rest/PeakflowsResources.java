@@ -48,15 +48,15 @@ public class PeakflowsResources {
      */
     @GET
     @Produces("application/json")
-    public List<Peakflow> findAll(){
-        return peakflowFacade.findAll();
+    public List<Peakflow> findAllPeakflow(){
+        return peakflowFacade.findAllPeakflow();
     } 
     
     
     @GET
     @Path("/searchByDate/{fromDate}/{toDate}")
     @Produces("application/json")
-    public List<Peakflow> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
+    public List<Peakflow> findByDatePeakflow(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
         Date fromDate;
         Date toDate;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); 
@@ -70,7 +70,7 @@ public class PeakflowsResources {
         } catch (ParseException ex) {
             toDate = null;
         }
-        return peakflowFacade.findByDate(fromDate, toDate);
+        return peakflowFacade.findByDatePeakflow(fromDate, toDate);
     }
     
      /**

@@ -45,14 +45,14 @@ public class AllergiessResource {
      */
     @GET
     @Produces("application/json")
-    public List<Allergies> findAll(){
-        return allergiesFacade.findAll();
+    public List<Allergies> findAllAllergies(){
+        return allergiesFacade.findAllAllergies();
     }
     
     @GET
     @Path("/searchByDate/{fromDate}/{toDate}")
     @Produces("application/json")
-    public List<Allergies> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
+    public List<Allergies> findByDateAllergies(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
         Date fromDate;
         Date toDate;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); 
@@ -66,7 +66,7 @@ public class AllergiessResource {
         } catch (ParseException ex) {
             toDate = null;
         }
-        return allergiesFacade.findByDate(fromDate, toDate);
+        return allergiesFacade.findByDateAllergies(fromDate, toDate);
     }
     
 

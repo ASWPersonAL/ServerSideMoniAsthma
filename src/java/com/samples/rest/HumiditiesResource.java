@@ -46,14 +46,14 @@ public class HumiditiesResource {
      */
     @GET
     @Produces("application/json")
-    public List<Humidity> findAll(){
-        return humidityFacade.findAll();
+    public List<Humidity> findAllHumidity(){
+        return humidityFacade.findAllHumidity();
     }
 
     @GET
     @Path("/searchByDate/{fromDate}/{toDate}")
     @Produces("application/json")
-    public List<Humidity> findByDate(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
+    public List<Humidity> findByDateHumidity(@PathParam("fromDate") String from, @PathParam("toDate") String to) {
         Date fromDate;
         Date toDate;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy"); 
@@ -67,7 +67,7 @@ public class HumiditiesResource {
         } catch (ParseException ex) {
             toDate = null;
         }
-        return humidityFacade.findByDate(fromDate, toDate);
+        return humidityFacade.findByDateHumidity(fromDate, toDate);
     }
     
 

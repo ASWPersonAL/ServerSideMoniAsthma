@@ -28,13 +28,13 @@ public class AllergiesFacade {
     
     //// Method to get all elements in allergies table in DB. 
     
-    public List<Allergies> findAll(){
+    public List<Allergies> findAllAllergies(){
         return em.createQuery("SELECT a FROM Allergies a ORDER BY a.alDate").getResultList();
     }
     
     //// Method to select elements from allergies table within a selected Date range.
     
-    public List<Allergies> findByDate(Date fromDate, Date toDate) {
+    public List<Allergies> findByDateAllergies(Date fromDate, Date toDate) {
       StringBuilder query = new StringBuilder("select a from Allergies a");
       
       if (fromDate != null || toDate != null) {

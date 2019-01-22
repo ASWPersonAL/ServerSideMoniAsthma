@@ -29,13 +29,13 @@ public class HumidityFacade {
     
     //// Method to get all elements in humidity table in DB. 
     
-    public List<Humidity> findAll(){
+    public List<Humidity> findAllHumidity(){
         return em.createQuery("SELECT h FROM Humidity h ORDER BY h.huDate").getResultList();
     }
     
     //// Method to select elements from humidity table within a selected Date range.
     
-      public List<Humidity> findByDate(Date fromDate, Date toDate) {
+      public List<Humidity> findByDateHumidity(Date fromDate, Date toDate) {
    
       StringBuilder query = new StringBuilder("select h from Humidity h");
       
